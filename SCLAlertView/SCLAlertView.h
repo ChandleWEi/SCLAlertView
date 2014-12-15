@@ -30,6 +30,16 @@ typedef NS_ENUM(NSInteger, SCLAlertViewStyle)
     Custom
 };
 
+/** Alert top Circle Position
+ *
+ */
+typedef NS_ENUM(NSInteger, SCLAlertViewTopCirclePositionStyle)
+{
+    TopLeft,
+    TopRight,
+    TopCenter,
+};
+
 /** Alert hide animation styles
  *
  * Set SCLAlertView hide animation type.
@@ -95,6 +105,13 @@ typedef NS_ENUM(NSInteger, SCLAlertViewBackground)
  */
 @property (nonatomic, assign) BOOL shouldDismissOnTapOutside;
 
+
+/** Dismiss on tap Top img
+ * A boolean value that determines whether to dismiss when tapping Top Img the SCLAlertView.
+ * (Default:NO)
+ */
+@property (nonatomic, assign) BOOL shouldDismissOnTapTopImg;
+
 /** Sound URL
  *
  * Holds the sound NSURL path.
@@ -121,6 +138,12 @@ typedef NS_ENUM(NSInteger, SCLAlertViewBackground)
  */
 @property (nonatomic) SCLAlertViewHideAnimation hideAnimationType;
 
+/**Top Circle position
+ *
+ * Sets the Top Circle position
+ *(Default: center)
+ */
+@property (nonatomic) SCLAlertViewTopCirclePositionStyle topCirclePosition;
 /** Show animation type
  *
  * Holds the show animation type.

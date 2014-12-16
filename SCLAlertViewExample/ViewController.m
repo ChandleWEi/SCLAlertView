@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "SCLAlertView.h"
+#import "AlertContainView.h"
 
 @interface ViewController ()
 
@@ -64,11 +65,26 @@ NSString *kAttributeTitle = @"Attributed string operation successfully completed
 
 - (IBAction)showError:(id)sender
 {
-    SCLAlertView *alert = [[SCLAlertView alloc] init];
     
-    [alert showError:self title:@"Hold On..."
-            subTitle:@"You have not saved your Submission yet. Please save the Submission before accessing the Responses list. Blah de blah de blah, blah. Blah de blah de"
-    closeButtonTitle:@"OK" duration:0.0f];
+    
+  
+
+    
+    SCLAlertView *alert = [[SCLAlertView alloc] init];
+    alert.topCirclePosition = TopRight;
+    alert.shouldDismissOnTapTopImg = YES;
+    alert.showCircleViewBackground = NO;
+    alert.circleViewBgColor = [UIColor blackColor];
+    
+    AlertContainView  * view = (AlertContainView*)[[[NSBundle mainBundle] loadNibNamed:@"AlertContainView" owner:self options:nil] firstObject];
+    view.textView.text = @"You've just displayed this awesome Pop Up View with blur effectYou've just displayed this awesome Pop Up View with blur effectYou've just displayed this awesome Pop Up View with blur effectYou've just displayed this awesome Pop Up View with blur effectYou've just displayed this awesome Pop Up View with blur effectYou've just displayed this awesome Pop Up View with blur effectYou've just displayed this awesome Pop Up View with blur effectYou've just displayed this awesome Pop Up View with blur effectYou've just displayed this awesome Pop Up View with blur effectYou've just displayed this awesome Pop Up View with blur effectYou've just displayed this awesome Pop Up View with blur effectYou've just displayed this awesome Pop Up View with blur effectYou've just displayed this awesome Pop Up View with blur effectYou've just displayed this awesome Pop Up View with blur effectYou've just displayed this awesome Pop Up View with blur effectYou've just displayed this awesome Pop Up View with blur effectYou've just displayed this awesome Pop Up View with blur effectYou've just displayed this awesome Pop Up View with blur effectYou've just displayed this awesome Pop Up View with blur effectYou've just displayed this awesome Pop Up View with blur effectYou've just displayed this awesome Pop Up View with blur effectYou've just displayed this awesome Pop Up View with blur effect";
+    [view.textView setFont:[UIFont systemFontOfSize:21]];
+    
+    
+    CGSize newSize = [view.textView sizeThatFits:CGSizeMake([alert.windowWidth floatValue], MAXFLOAT)];
+    float height = [view.imageViewHeight constant] + newSize.height;
+    
+    [alert showTitle:self color:nil style:Error containerView:view height:@(height)];
 }
 
 - (IBAction)showNotice:(id)sender

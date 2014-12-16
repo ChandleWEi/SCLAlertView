@@ -167,6 +167,11 @@ typedef NS_ENUM(NSInteger, SCLAlertViewBackground)
  */
 @property (nonatomic, strong) UIColor *circleViewBgColor;
 
+/**
+ *  content view width
+ */
+@property (nonatomic,strong) NSNumber * windowWidth;
+
 /** Warns that alerts is gone
  *
  * Warns that alerts is gone using block
@@ -307,5 +312,15 @@ typedef NS_ENUM(NSInteger, SCLAlertViewBackground)
  */
 - (void)showWaiting:(UIViewController *)vc title:(NSString *)title subTitle:(NSString *)subTitle closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration;
 
+/**
+ *  add custom view to content view
+ *
+ *  @param vc    The view controller the alert view will be displayed in
+ *  @param color A UIColor object to be used to tint the background of the icon circle
+ *  @param style One of predefined SCLAlertView styles.
+ *  @param view  custom view
+ *
+ */
+-(void)showTitle:(UIViewController *)vc color:(UIColor *)color  style:(SCLAlertViewStyle)style containerView:(UIView*)view height:(NSNumber*)height;
 
 @end

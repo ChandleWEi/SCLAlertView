@@ -35,6 +35,10 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 @property (nonatomic, strong) UIView *circleViewBackground;
 @property (nonatomic, strong) UIView *contentView;
 @property (nonatomic, strong) UIImageView *backgroundView;
+
+@property (nonatomic, strong) UIView *customContainView;
+@property (nonatomic, strong) NSNumber *customContainViewHeight;
+
 @property (nonatomic, strong) AVAudioPlayer *audioPlayer;
 @property (nonatomic, strong) UITapGestureRecognizer *gestureRecognizer;
 @property (nonatomic, strong) UITapGestureRecognizer *topImgGestureRecognizer;
@@ -55,6 +59,11 @@ CGFloat kCircleIconHeight;
 CGFloat kActivityIndicatorHeight;
 CGFloat kWindowWidth;
 CGFloat kWindowHeight;
+
+CGFloat kMaxWindowHeight;
+CGFloat kVMargin;
+CGFloat kHMargin;
+
 CGFloat kTextHeight;
 
 // Subtitle
@@ -92,6 +101,13 @@ NSTimer *durationTimer;
         kWindowWidth = 240.0f;
         kWindowHeight = 178.0f;
         
+        //vertical horizontal margin
+        kVMargin = 40.0f;
+        kHMargin = 30.0f;
+        kMaxWindowHeight = [[UIScreen mainScreen] bounds].size.height - kVMargin*2;
+        kWindowWidth = [[UIScreen mainScreen] bounds].size.width - kHMargin*2;
+        _windowWidth = @(kWindowWidth);
+        
         kSubTitleHeight = 90.0f;
         kTextHeight = 90.0f;
         _shouldDismissOnTapOutside = NO;
@@ -125,6 +141,7 @@ NSTimer *durationTimer;
         
         [_circleView addSubview:_circleIconImageView];
         [_circleView addSubview:_activityIndicatorView];
+        
         [_contentView addSubview:_labelTitle];
         [_contentView addSubview:_viewText];
         
@@ -211,7 +228,11 @@ NSTimer *durationTimer;
     
     // Set frames
     if (_shouldDismissOnTapTopImg) {
-        
+        if ([_customContainViewHeight floatValue] > kMaxWindowHeight) {
+            kWindowHeight = kMaxWindowHeight;
+        }else{
+            kWindowHeight = [_customContainViewHeight floatValue];
+        }
         CGRect rect;
         if (self.view.superview != nil)
         {
@@ -225,6 +246,7 @@ NSTimer *durationTimer;
         }
         
         self.view.frame = [[UIScreen mainScreen] bounds];
+
         _contentView.frame = CGRectMake(rect.origin.x, rect.origin.y + kCircleHeight / 4, kWindowWidth, kWindowHeight );
         
     }else{
@@ -244,7 +266,11 @@ NSTimer *durationTimer;
         _contentView.frame = CGRectMake(0.0f, kCircleHeight / 4, kWindowWidth, kWindowHeight );
         
     }
-    
+    //add customContainView if existed
+    if (_customContainView) {
+        _customContainView.frame = _contentView.bounds;
+        [_contentView addSubview:_customContainView];
+    }
     
     /**
      *  set Top Circle Position
@@ -601,7 +627,56 @@ NSTimer *durationTimer;
 
 #pragma mark - Show Alert
 
+
+
+-(void)showTitle:(UIViewController *)vc color:(UIColor *)color  style:(SCLAlertViewStyle)style containerView:(UIView*)view height:(NSNumber*)height
+{
+    
+    [self subActionShowTitle:vc image:nil  color:color title:nil subTitle:nil duration:0.0 completeText:nil style:style];
+    
+    
+    NSArray *subViews = [self.contentView subviews];
+    if([subViews count] != 0)
+    {
+
+        for (UIView * subView in subViews) {
+
+                [subView removeFromSuperview];
+                //                [subViews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+
+        }
+        
+    }
+    _customContainView = view;
+
+
+    _customContainViewHeight = height;
+    
+    // Show the alert view
+    [self showView];
+    
+    // Chainable objects
+//    return [[SCLAlertViewResponder alloc] init:self];
+    
+    
+}
+
 -(SCLAlertViewResponder *)showTitle:(UIViewController *)vc image:(UIImage *)image color:(UIColor *)color title:(NSString *)title subTitle:(NSString *)subTitle duration:(NSTimeInterval)duration completeText:(NSString *)completeText style:(SCLAlertViewStyle)style
+{
+    
+    [self subActionShowTitle:vc image:image color:color title:title subTitle:subTitle duration:duration completeText:completeText style:style];
+    
+    // Show the alert view
+    [self showView];
+    
+    // Chainable objects
+    return [[SCLAlertViewResponder alloc] init:self];
+    
+    
+}
+
+
+-(void)subActionShowTitle:(UIViewController *)vc image:(UIImage *)image color:(UIColor *)color title:(NSString *)title subTitle:(NSString *)subTitle duration:(NSTimeInterval)duration completeText:(NSString *)completeText style:(SCLAlertViewStyle)style
 {
     UIWindow *window = [[UIApplication sharedApplication] keyWindow];
     
@@ -742,7 +817,7 @@ NSTimer *durationTimer;
     }else{
         self.circleView.backgroundColor = viewColor;
     }
-
+    
     
     if (style == Waiting) {
         [self.activityIndicatorView startAnimating];
@@ -787,11 +862,7 @@ NSTimer *durationTimer;
                                                         repeats:NO];
     }
     
-    // Show the alert view
-    [self showView];
     
-    // Chainable objects
-    return [[SCLAlertViewResponder alloc] init:self];
 }
 
 - (void)showSuccess:(UIViewController *)vc title:(NSString *)title subTitle:(NSString *)subTitle closeButtonTitle:(NSString *)closeButtonTitle duration:(NSTimeInterval)duration

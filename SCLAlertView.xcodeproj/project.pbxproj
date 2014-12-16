@@ -37,7 +37,7 @@
 /* Begin PBXFileReference section */
 		4322A7071A3F2DBE005993B5 /* AlertContainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlertContainView.h; path = SCLAlertViewExample/AlertContainView.h; sourceTree = SOURCE_ROOT; };
 		4322A7081A3F2DBE005993B5 /* AlertContainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlertContainView.m; path = SCLAlertViewExample/AlertContainView.m; sourceTree = SOURCE_ROOT; };
-		4322A70A1A3F2DFA005993B5 /* AlertContainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertContainView.xib; sourceTree = "<group>"; };
+		4322A70A1A3F2DFA005993B5 /* AlertContainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AlertContainView.xib; path = ../SCLAlertViewExample/AlertContainView.xib; sourceTree = "<group>"; };
 		DD0D295B19D902DA00881F53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = SCLAlertViewExample/Info.plist; sourceTree = SOURCE_ROOT; };
 		DD2E172819FA84B800CBAEC3 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		DD2E172919FA84B800CBAEC3 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };

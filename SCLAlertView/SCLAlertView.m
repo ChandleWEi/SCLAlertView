@@ -32,8 +32,8 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 @property (nonatomic, strong) NSMutableArray *buttons;
 @property (nonatomic, strong) UIImageView *circleIconImageView;
 @property (nonatomic, strong) UIView *circleView;
-@property (nonatomic, strong) UIView *contentView;
 @property (nonatomic, strong) UIView *circleViewBackground;
+@property (nonatomic, strong) UIView *contentView;
 @property (nonatomic, strong) UIImageView *backgroundView;
 @property (nonatomic, strong) AVAudioPlayer *audioPlayer;
 @property (nonatomic, strong) UITapGestureRecognizer *gestureRecognizer;
@@ -102,6 +102,7 @@ NSTimer *durationTimer;
         _topCirclePosition = TopCenter;
         _showAnimationType = SlideInFromTop;
         _backgroundType = Shadow;
+        _showCircleViewBackground = YES;
         
         // Init
         _labelTitle = [[UILabel alloc] init];
@@ -263,13 +264,20 @@ NSTimer *durationTimer;
     }
     
     
+    if (_showCircleViewBackground) {
+        _circleViewBackground.frame = CGRectMake(0,
+                                                 0,
+                                                 kCircleHeightBackground,
+                                                 kCircleHeightBackground);
+        
+    }else{
+        _circleViewBackground.frame = CGRectMake(0,
+                                                 0,
+                                                 kCircleHeight,
+                                                 kCircleHeight);
+    }
     
     
-    
-    _circleViewBackground.frame = CGRectMake(0,
-                                             0,
-                                             kCircleHeightBackground,
-                                             kCircleHeightBackground);
     
     _circleViewBackground.center = circlePtCenter;
     
@@ -729,7 +737,12 @@ NSTimer *durationTimer;
     }
     
     // Alert view colour and images
-    self.circleView.backgroundColor = viewColor;
+    if (_circleViewBgColor) {
+        self.circleView.backgroundColor = _circleViewBgColor;
+    }else{
+        self.circleView.backgroundColor = viewColor;
+    }
+
     
     if (style == Waiting) {
         [self.activityIndicatorView startAnimating];

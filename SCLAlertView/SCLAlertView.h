@@ -112,6 +112,10 @@ typedef NS_ENUM(NSInteger, SCLAlertViewBackground)
  */
 @property (nonatomic, assign) BOOL shouldDismissOnTapTopImg;
 
+/** Show top circle view background
+ *  Default:YES
+ */
+@property (nonatomic, assign) BOOL showCircleViewBackground;
 /** Sound URL
  *
  * Holds the sound NSURL path.
@@ -157,6 +161,11 @@ typedef NS_ENUM(NSInteger, SCLAlertViewBackground)
  * (Default: Shadow)
  */
 @property (nonatomic) SCLAlertViewBackground backgroundType;
+
+/**
+ *  circle view blackColor
+ */
+@property (nonatomic, strong) UIColor *circleViewBgColor;
 
 /** Warns that alerts is gone
  *

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4322A7091A3F2DBE005993B5 /* AlertContainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4322A7081A3F2DBE005993B5 /* AlertContainView.m */; };
+		4322A70B1A3F2DFA005993B5 /* AlertContainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4322A70A1A3F2DFA005993B5 /* AlertContainView.xib */; };
 		DD2E172A19FA84B800CBAEC3 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = DD2E172919FA84B800CBAEC3 /* UIImage+ImageEffects.m */; };
 		DD4BA9BE19DED822008D73EB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4BA9BD19DED822008D73EB /* AVFoundation.framework */; };
 		DD4BA9C119DED8EF008D73EB /* right_answer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DD4BA9C019DED8EF008D73EB /* right_answer.mp3 */; };
@@ -33,6 +35,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4322A7071A3F2DBE005993B5 /* AlertContainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlertContainView.h; path = SCLAlertViewExample/AlertContainView.h; sourceTree = SOURCE_ROOT; };
+		4322A7081A3F2DBE005993B5 /* AlertContainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlertContainView.m; path = SCLAlertViewExample/AlertContainView.m; sourceTree = SOURCE_ROOT; };
+		4322A70A1A3F2DFA005993B5 /* AlertContainView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertContainView.xib; sourceTree = "<group>"; };
 		DD0D295B19D902DA00881F53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = SCLAlertViewExample/Info.plist; sourceTree = SOURCE_ROOT; };
 		DD2E172819FA84B800CBAEC3 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		DD2E172919FA84B800CBAEC3 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
@@ -118,6 +123,9 @@
 				DDB15FC919D5B88A00173158 /* ViewController.m */,
 				DDB15FA019D5B7C600173158 /* Supporting Files */,
 				DD7282B719D6087C00077F54 /* Storyboard.storyboard */,
+				4322A7071A3F2DBE005993B5 /* AlertContainView.h */,
+				4322A7081A3F2DBE005993B5 /* AlertContainView.m */,
+				4322A70A1A3F2DFA005993B5 /* AlertContainView.xib */,
 			);
 			name = SCLAlertViewExample;
 			path = SCLAlertView;
@@ -248,6 +256,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4322A70B1A3F2DFA005993B5 /* AlertContainView.xib in Resources */,
 				DD4BA9C119DED8EF008D73EB /* right_answer.mp3 in Resources */,
 				DDB15FD019D5B8BF00173158 /* Images.xcassets in Resources */,
 				DD7282B919D6087C00077F54 /* Storyboard.storyboard in Resources */,
@@ -275,6 +284,7 @@
 				DDB15FD719D5B96500173158 /* SCLAlertView.m in Sources */,
 				DDB15FDB19D5BAA000173158 /* SCLButton.m in Sources */,
 				DDB15FCA19D5B88A00173158 /* AppDelegate.m in Sources */,
+				4322A7091A3F2DBE005993B5 /* AlertContainView.m in Sources */,
 				DDB15FDE19D5BCF400173158 /* SCLAlertViewResponder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
